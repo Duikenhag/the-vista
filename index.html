@@ -179,6 +179,8 @@ p{margin:0}
 .player .playbtn:hover i{transform:scale(1.07)}
 .player .playbtn svg{width:24px;height:24px;fill:var(--ink);margin-left:4px}
 .player .playbtn span{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.player.loading::after{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:999px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin 820ms linear infinite;z-index:3;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
 .videorow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:clamp(28px,5vw,64px);align-items:center}
 
 /* ------------------------------------------------------------------- 360 */
@@ -1334,14 +1336,34 @@ $("#lb").addEventListener("click",e=>{ if(e.target===$("#lb")||e.target.id==="lb
 
 /* ----------------------------------------------------------------- video */
 (function(){
-  const v=$("#vMain"), p=$("#vPlay"), poster=$("#vPoster");
+  const v=$("#vMain"), p=$("#vPlay"), poster=$("#vPoster"), box=$("#player");
+  let started=false;
+  // keep the poster up until the film is actually running, so a slow
+  // connection never shows an empty black frame
+  v.addEventListener("playing",()=>{ poster.hidden=true; box.classList.remove("loading"); },{once:false});
+  v.addEventListener("waiting",()=>box.classList.add("loading"));
+  v.addEventListener("canplay",()=>box.classList.remove("loading"));
+  v.addEventListener("error",()=>{
+    box.classList.remove("loading");
+    poster.hidden=false; p.style.display=""; started=false;
+    toast("The film could not load here. Check your connection and try again.");
+  });
   p.addEventListener("click",()=>{
-    v.hidden=false; poster.hidden=true; p.style.display="none";
-    v.controls=true; v.preload="auto";
-    try{ v.load(); }catch(e){}
-    const go=()=>{ const r=v.play(); if(r&&r.catch) r.catch(()=>{}); };
-    if(v.readyState>=2) go(); else v.addEventListener("loadeddata",go,{once:true});
-    setTimeout(go,350);
+    // play() must be called synchronously inside the click: iOS and mobile
+    // browsers only allow playback while the user gesture is still in scope.
+    v.hidden=false; v.controls=true; v.preload="auto";
+    p.style.display="none"; box.classList.add("loading"); started=true;
+    const r=v.play();
+    if(r && r.catch) r.catch(()=>{
+      // one retry after an explicit load
+      try{ v.load(); }catch(e){}
+      const again=v.play();
+      if(again && again.catch) again.catch(()=>{
+        box.classList.remove("loading");
+        poster.hidden=false; p.style.display="";
+        toast("Your browser blocked playback. Tap the film itself to start it.");
+      });
+    });
   });
 })();
 
