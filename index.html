@@ -1,0 +1,1544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Vista Mukkani</title>
+<meta name="description" content="The Vista by Mukkanni in Kuppadi, Sulthan Bathery, Wayanad. A 360 degree virtual tour of the apartments, the covered pool and the balcony views, with a walkthrough film and a booking request form.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2333503f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V9"/><path d="M12 13c0-3.4 2.6-6.2 6.4-6.6-.3 3.8-2.9 6.6-6.4 6.6z"/><path d="M12 16.4c0-3-2.3-5.4-5.6-5.8.3 3.3 2.6 5.8 5.6 5.8z"/><path d="M12 9c0-3.1 1.6-5.4 4-6.4.3 3.1-1.4 5.7-4 6.4z"/></svg>'>
+<link rel="apple-touch-icon" href="img/openplan.jpg">
+
+<!-- Link previews (WhatsApp, Instagram, Facebook, X).
+     Once the site is live at your own address, replace the two relative paths
+     below with the full URL, e.g. https://thevista.example/og.jpg -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Vista by Mukkanni">
+<meta property="og:title" content="The Vista — Kuppadi, Sulthan Bathery, Wayanad">
+<meta property="og:description" content="A 360° virtual tour of your staycation. Pool, balcony views and modern interiors in Wayanad.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The balcony at The Vista looking out over palms and green slopes.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Vista — Kuppadi, Sulthan Bathery, Wayanad">
+<meta name="twitter:description" content="A 360° virtual tour of your staycation.">
+<meta name="twitter:image" content="og.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap">
+</head>
+<body>
+<style>
+/* Layout concept: a white editorial listing page. Wide photography, one narrow measure of text, a booking card that rides alongside. */
+:root{
+  --paper:#ffffff; --paper-2:#f7f6f2; --paper-3:#efeee8;
+  --ink:#11161a; --ink-2:#3c4542; --ink-3:#69706c;
+  --line:#e0dfd7; --line-2:#cbcac0;
+  --accent:#8a6726; --accent-2:#b9883a; --accent-wash:#f6efe2;
+  --forest:#33503f; --sage:#e9ede4; --leaf:#c3cfba;
+  --r:16px; --r-s:10px; --r-l:24px;
+  --dur:260ms; --ease:cubic-bezier(.22,.61,.36,1);
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --ui:"Jost","Avenir Next",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --shadow:0 1px 2px rgba(20,24,22,.05),0 10px 30px rgba(20,24,22,.07);
+  --shadow-s:0 1px 2px rgba(20,24,22,.06),0 4px 14px rgba(20,24,22,.06);
+  --nav:68px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 18px)}
+body{margin:0;background-color:var(--paper);background-image:url("img/leaves.svg");background-size:300px 300px;background-attachment:fixed;color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+
+/* ------------------------------------------------------------- primitives */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-inline:20px}
+.wrap-n{width:100%;max-width:760px;margin:0 auto;padding-inline:20px}
+.sec{padding-block:clamp(52px,7vw,96px)}
+.sec.tight{padding-block:clamp(34px,4.5vw,56px)}
+.sec.cream{background-color:var(--paper-2);background-image:url("img/leaves.svg");background-size:300px 300px;background-attachment:fixed;position:relative;overflow:hidden}
+.sec.cream>*{position:relative;z-index:1}
+/* botanical decoration */
+.decor{position:absolute;pointer-events:none;user-select:none;z-index:0;opacity:.9}
+.decor img{width:100%;height:auto;display:block}
+.decor.bl{left:-26px;bottom:-30px;width:clamp(150px,19vw,290px)}
+.decor.tr{right:-26px;top:-30px;width:clamp(140px,17vw,260px);transform:rotate(180deg)}
+.herowrap{position:relative;overflow:hidden;isolation:isolate}
+.herodecor{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.herodecor .wash{position:absolute;right:-8%;top:-32%;width:min(760px,86vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(205,217,200,.55),rgba(205,217,200,.16) 62%,transparent 72%)}
+.herodecor .wash2{position:absolute;left:-16%;bottom:-30%;width:min(520px,70vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(233,222,198,.5),transparent 70%)}
+.herodecor .spray{position:absolute;display:block}
+.herodecor .spray.a{right:-56px;top:-70px;width:clamp(160px,20vw,330px);transform:scaleX(-1);opacity:.78}
+.herodecor .spray.b{left:-40px;top:46%;width:clamp(104px,13vw,210px);opacity:.6}
+.herodecor .arc{position:absolute;right:4%;top:-46%;width:min(620px,74vw);aspect-ratio:1;border-radius:50%;border:1px solid rgba(154,116,48,.2)}
+.herodecor .arc2{position:absolute;right:-12%;top:-62%;width:min(760px,88vw);aspect-ratio:1;border-radius:50%;border:1px solid rgba(51,80,63,.14)}
+.leafrule{display:flex;align-items:center;gap:14px;color:var(--leaf)}
+.leafrule::before,.leafrule::after{content:"";flex:1 1 auto;height:1px;background:var(--line)}
+.leafrule svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:1.3;opacity:.8}
+.logomark{width:21px;height:21px;flex:0 0 auto;fill:none;stroke:var(--forest);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.h-xl{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.4vw,70px);line-height:1.02;letter-spacing:-.005em}
+.h-l{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.1}
+.h-m{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,28px);line-height:1.18}
+.lede{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.2vw,25px);line-height:1.5;color:var(--ink)}
+.lede em{font-style:italic;color:var(--accent)}
+.body{color:var(--ink-2);font-weight:400;font-size:15.5px;line-height:1.72;max-width:62ch}
+.muted{color:var(--ink-3);font-size:13px;font-weight:400;line-height:1.62}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:999px;background:var(--forest);color:#fff;font-size:12.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);white-space:nowrap}
+.btn:hover{background:#28402f;box-shadow:var(--shadow-s)}
+.btn:active{transform:scale(.985)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line-2)}
+.btn.ghost:hover{background:var(--paper-2);border-color:var(--ink-3);box-shadow:none}
+.btn.gold{background:var(--accent);color:#fff}
+.btn.gold:hover{background:#8a6629}
+.btn.sm{padding:10px 17px;font-size:11px}
+.btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:12.5px;letter-spacing:.04em;color:var(--ink-2);font-weight:400}
+.pill svg{width:15px;height:15px;fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ------------------------------------------------------------------- nav */
+#nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(255,255,255,.88);backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid transparent;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+#nav.stuck{border-color:var(--line);box-shadow:0 1px 14px rgba(20,24,22,.05)}
+.navin{height:var(--nav);display:flex;align-items:center;gap:20px}
+.logo{display:flex;flex-direction:row;align-items:center;line-height:1;gap:9px;text-decoration:none;flex:0 0 auto}
+.logo .logotext{display:flex;flex-direction:column;gap:3px;text-transform:none;letter-spacing:normal}
+.logo b{font-family:var(--display);font-weight:500;font-size:22px;letter-spacing:.005em;display:block}
+.logo .logotext>span{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3);display:block}
+.navlinks{display:flex;gap:4px;margin-left:auto;align-items:center}
+.navlinks a{padding:9px 13px;border-radius:999px;font-size:13.5px;color:var(--ink-2);font-weight:400;text-decoration:none;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.navlinks a:hover{background:var(--paper-2);color:var(--ink)}
+.navlinks a[aria-current="page"]{color:var(--ink);font-weight:500}
+.navcta{display:flex;gap:9px;align-items:center;flex:0 0 auto}
+.iconbtn{width:38px;height:38px;display:grid;place-items:center;border-radius:999px;border:1px solid var(--line);transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.iconbtn:hover{background:var(--paper-2);border-color:var(--line-2)}
+.iconbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.iconbtn.on svg{fill:var(--accent);stroke:var(--accent)}
+#navToggle{display:none}
+
+/* ------------------------------------------------------------------ hero */
+.hero{padding-top:clamp(28px,4vw,44px)}
+.herohead{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:clamp(18px,2.5vw,26px)}
+.strap{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(19px,2.3vw,26px);color:var(--accent);margin-top:14px;letter-spacing:.005em}
+.herohead .sub{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;color:var(--ink-2);font-size:14px;font-weight:400}
+.herohead .sub b{font-weight:500;color:var(--ink)}
+.dot{width:3px;height:3px;border-radius:999px;background:var(--line-2);display:inline-block}
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,minmax(130px,25vh));gap:8px;border-radius:var(--r-l);overflow:hidden;position:relative}
+.mosaic button{position:relative;overflow:hidden;background:var(--paper-3)}
+.mosaic button:first-child{grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 600ms var(--ease)}
+.mosaic button:hover img{transform:scale(1.035)}
+.mosaic .allphotos{position:absolute;right:16px;bottom:16px;z-index:2;background:var(--paper);border:1px solid var(--ink);color:var(--ink);box-shadow:var(--shadow-s)}
+.mosaic .allphotos:hover{background:var(--paper-2)}
+
+/* --------------------------------------------------------------- columns */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:clamp(28px,5vw,64px);align-items:start}
+.bookcard{background-image:none;position:sticky;top:calc(var(--nav) + 22px);border:1px solid var(--line);border-radius:var(--r-l);padding:22px;background:var(--paper);box-shadow:var(--shadow)}
+.bookcard h3{font-family:var(--display);font-weight:400;font-size:25px;line-height:1.15;margin-bottom:4px}
+.bookcard .note{margin-top:14px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-2);border-radius:var(--r-s);overflow:hidden;margin-top:16px}
+.fcell{padding:10px 13px;min-width:0;border-right:1px solid var(--line-2)}
+.fcell:last-child{border-right:0}
+.fcell.full{grid-column:1/-1;border-right:0;border-top:1px solid var(--line-2)}
+.fcell label{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+.fcell input,.fcell select{width:100%;border:0;padding:0;font-family:var(--ui);font-size:14px;color:var(--ink);background:none}
+.fcell input:focus,.fcell select:focus{outline:none}
+.stack{display:flex;flex-direction:column;gap:clamp(26px,3.4vw,40px)}
+.feature-row{display:flex;flex-wrap:wrap;gap:9px}
+.dl{display:grid;grid-template-columns:132px minmax(0,1fr);gap:14px 22px;font-size:14.5px}
+.dl dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+.dl dd{margin:0;color:var(--ink-2);font-weight:400;line-height:1.66}
+.ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px 24px}
+.ticks li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink-2);font-weight:400}
+.ticks li svg{flex:0 0 auto;width:16px;height:16px;margin-top:4px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+/* ---------------------------------------------------------------- rooms */
+.roomgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:clamp(14px,2vw,22px)}
+.roomcard{text-align:left;display:flex;flex-direction:column;gap:11px;min-width:0}
+.roomcard .shot{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--paper-3)}
+.roomcard img{width:100%;height:100%;object-fit:cover;transition:transform 600ms var(--ease)}
+.roomcard:hover img{transform:scale(1.04)}
+.roomcard .count{position:absolute;left:10px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.92);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.roomcard h3{font-family:var(--display);font-weight:500;font-size:20px;line-height:1.2}
+.roomcard p{font-size:14px;color:var(--ink-2);font-weight:400;line-height:1.55}
+.roomcard .kind{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+
+/* ---------------------------------------------------------------- video */
+.videoband{background:var(--paper-2)}
+.player{position:relative;border-radius:var(--r-l);overflow:hidden;background:#0d100e;box-shadow:var(--shadow);aspect-ratio:9/16;max-height:min(76vh,760px);margin-inline:auto;width:min(100%,430px)}
+.player video{width:100%;height:100%;object-fit:cover;display:block}
+.player .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.player .playbtn{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(to top,rgba(10,13,11,.5),rgba(10,13,11,.08) 45%,rgba(10,13,11,.3));transition:opacity var(--dur) var(--ease)}
+.player .playbtn i{width:74px;height:74px;border-radius:999px;background:rgba(255,255,255,.94);display:grid;place-items:center;box-shadow:0 10px 32px rgba(0,0,0,.3);transition:transform var(--dur) var(--ease)}
+.player .playbtn:hover i{transform:scale(1.07)}
+.player .playbtn svg{width:24px;height:24px;fill:var(--ink);margin-left:4px}
+.player .playbtn span{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.videorow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:clamp(28px,5vw,64px);align-items:center}
+
+/* ------------------------------------------------------------------- 360 */
+.panoshell{width:100vw;margin-inline:calc(50% - 50vw);position:relative}
+.pano{position:relative;overflow:hidden;background:var(--paper-3);height:clamp(420px,74vh,820px);cursor:grab;touch-action:pan-y;user-select:none}
+.pano.grabbing{cursor:grabbing}
+.pano::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent 16%,transparent 72%,rgba(20,24,22,.26))}
+.pano .strip{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform;backface-visibility:hidden;opacity:0;transition:opacity 700ms var(--ease)}
+.pano.ready .strip{opacity:1}
+.pano .strip img{height:100%;width:auto;max-width:none;object-fit:cover;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.pano .hint{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:11px 20px;border-radius:999px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);pointer-events:none;box-shadow:var(--shadow-s);transition:opacity 420ms var(--ease),transform 420ms var(--ease);z-index:3}
+.pano.moved .hint{opacity:0;transform:translateX(-50%) translateY(8px)}
+.pano .hint svg{width:16px;height:16px;fill:none;stroke:var(--accent);stroke-width:1.7}
+.panoctl{position:absolute;right:18px;top:18px;display:flex;gap:8px;z-index:3}
+.panoctl button{width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;box-shadow:var(--shadow-s);transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.panoctl button:hover{background:#fff;transform:translateY(-1px)}
+.panoctl button.on{background:var(--forest);color:#fff}
+.panoctl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.panonav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:999px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;box-shadow:var(--shadow);z-index:3;opacity:0;transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease),background var(--dur) var(--ease)}
+.pano:hover .panonav,.pano:focus-within .panonav{opacity:1}
+.panonav:hover{background:#fff}
+.panonav.l{left:22px}
+.panonav.r{right:22px}
+.panonav.l:hover{transform:translateY(-50%) translateX(-3px)}
+.panonav.r:hover{transform:translateY(-50%) translateX(3px)}
+.panonav svg{width:19px;height:19px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.panobar{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;width:min(280px,54vw);height:2px;border-radius:2px;background:rgba(255,255,255,.45);overflow:hidden;z-index:3}
+.panobar i{position:absolute;top:0;bottom:0;width:26%;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(20,24,22,.08)}
+@media (max-width:720px){
+  .pano{height:clamp(340px,56vh,520px)}
+  .panonav{display:none}
+  .pano .hint{bottom:44px;font-size:10.5px;padding:10px 16px}
+}
+
+/* --------------------------------------------------------------- strips */
+.photorow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.photorow button{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--paper-3)}
+.photorow img{width:100%;height:100%;object-fit:cover;transition:transform 600ms var(--ease)}
+.photorow button:hover img{transform:scale(1.04)}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(22px,4vw,52px);align-items:center}
+.figure{border-radius:var(--r-l);overflow:hidden;box-shadow:var(--shadow-s)}
+.figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.cap{margin-top:10px;font-size:12.5px;color:var(--ink-2);font-weight:400}
+
+/* --------------------------------------------------------------- gallery */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{padding:8px 15px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;color:var(--ink-2);transition:all var(--dur) var(--ease)}
+.filters button:hover{border-color:var(--ink-3)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.masonry{columns:3;column-gap:12px}
+.masonry button{break-inside:avoid;margin-bottom:12px;width:100%;border-radius:var(--r);overflow:hidden;background:var(--paper-3);display:block}
+.masonry img{width:100%;height:auto;transition:transform 600ms var(--ease),opacity var(--dur) var(--ease)}
+.masonry button:hover img{transform:scale(1.03)}
+
+/* -------------------------------------------------------------- lightbox */
+#lb{position:fixed;inset:0;z-index:90;background:rgba(14,16,15,.95);display:grid;grid-template-rows:auto 1fr auto;opacity:0;pointer-events:none;transition:opacity var(--dur) var(--ease)}
+#lb.open{opacity:1;pointer-events:auto}
+#lb .lbh{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;padding-top:calc(16px + env(safe-area-inset-top,0px));color:#fff}
+#lb .lbh span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+#lb .lbs{display:grid;place-items:center;min-height:0;padding:0 14px}
+#lb .lbs img,#lb .lbs video{max-width:100%;max-height:100%;border-radius:var(--r-s)}
+#lb .lbf{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));color:rgba(255,255,255,.8);font-size:12px}
+#lb .lbbtn{width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.26);display:grid;place-items:center;color:#fff;transition:background var(--dur) var(--ease)}
+#lb .lbbtn:hover{background:rgba(255,255,255,.14)}
+#lb .lbbtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+
+/* --------------------------------------------------------------- booking */
+.bookcols{display:grid;grid-template-columns:minmax(0,1fr) 376px;gap:clamp(28px,5vw,56px);align-items:start}
+.panelcard{border:1px solid var(--line);border-radius:var(--r-l);padding:clamp(20px,3vw,30px);background:var(--paper)}
+.summary{position:sticky;top:calc(var(--nav) + 22px);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
+.summary .simg{aspect-ratio:16/10;background:var(--paper-3)}
+.summary .simg img{width:100%;height:100%;object-fit:cover}
+.summary .sbody{padding:20px;display:flex;flex-direction:column;gap:14px}
+.summary dl{display:flex;flex-direction:column;gap:9px;margin:0}
+.srow{display:flex;align-items:baseline;justify-content:space-between;gap:14px;font-size:14px}
+.srow dt{color:var(--ink-3);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.srow dd{margin:0;font-weight:400;text-align:right;min-width:0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.field input,.field textarea,.field select{width:100%;padding:12px 14px;border-radius:var(--r-s);border:1px solid var(--line-2);background:var(--paper);font-family:var(--ui);font-size:15px;color:var(--ink);font-weight:400}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.field textarea{resize:vertical;min-height:90px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px}
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px}
+.slot{padding:11px 8px;border-radius:var(--r-s);border:1px solid var(--line-2);font-size:14px;color:var(--ink-2);font-weight:400;text-align:center;font-variant-numeric:tabular-nums;transition:all var(--dur) var(--ease)}
+.slot:hover{border-color:var(--ink-3)}
+.slot[aria-pressed="true"]{border-color:var(--forest);background:#f1f5f2;color:var(--forest);font-weight:500}
+.steps{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.steps span{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.steps b{width:22px;height:22px;border-radius:999px;border:1px solid var(--line-2);display:grid;place-items:center;font-size:11px;font-weight:500}
+.steps .now{color:var(--ink)}
+.steps .now b{background:var(--forest);border-color:var(--forest);color:#fff}
+.formstack{display:flex;flex-direction:column;gap:22px}
+.callout{border-left:2px solid var(--accent);padding:2px 0 2px 14px;color:var(--ink-2);font-size:14px;font-weight:400;line-height:1.66}
+code.block{display:block;padding:14px 16px;border-radius:var(--r-s);background:var(--paper-2);border:1px solid var(--line);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.7;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+
+/* ---------------------------------------------------------------- footer */
+footer{background:var(--paper-2);border-top:1px solid var(--line)}
+.footgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:30px;padding-block:clamp(40px,5vw,60px)}
+.footgrid h4{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:12px}
+.footgrid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.footgrid a{font-size:14px;color:var(--ink-2);text-decoration:none;font-weight:400}
+.footgrid a:hover{color:var(--accent)}
+.footbar{border-top:1px solid var(--line);padding-block:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);font-weight:400}
+
+/* ----------------------------------------------------------------- misc */
+#toast{position:fixed;left:50%;transform:translate(-50%,16px);bottom:26px;z-index:95;padding:12px 20px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;opacity:0;pointer-events:none;transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);box-shadow:var(--shadow);max-width:calc(100vw - 32px)}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.page{display:none}
+.page.on{display:block}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity 620ms var(--ease),transform 620ms var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.stickybook{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;align-items:center;justify-content:space-between;gap:14px;padding:12px 18px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.stickybook b{font-family:var(--display);font-size:19px;font-weight:500}
+.stickybook .muted{margin-top:1px}
+
+@media (max-width:940px){
+  .cols,.bookcols{grid-template-columns:minmax(0,1fr)}
+  .bookcard{position:static}
+  .summary{position:static}
+  .videorow{grid-template-columns:minmax(0,1fr)}
+  .masonry{columns:2}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,22vh)}
+  .mosaic button:first-child{grid-row:span 1;grid-column:span 2}
+  .mosaic button:nth-child(n+4){display:none}
+}
+@media (max-width:720px){
+  .herohead .sub .dot{display:none}
+  .navlinks{display:none}
+  #navToggle{display:grid}
+  #nav.open .navlinks{display:flex;position:absolute;left:0;right:0;top:var(--nav);flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 14px 14px;box-shadow:var(--shadow)}
+  #nav.open .navlinks a{padding:13px 10px;border-radius:var(--r-s);font-size:15px}
+  .stickybook{display:flex}
+  body.booking .stickybook{display:none}
+  .dl{grid-template-columns:minmax(0,1fr);gap:4px 0}
+  .dl dt{padding-top:12px}
+  .masonry{columns:1}
+  .player{width:100%}
+  footer{padding-bottom:70px}
+}
+@media (max-width:430px){
+  .navin{gap:10px}
+  .navcta{gap:6px}
+  .iconbtn{width:34px;height:34px}
+  #btnShare{display:none}
+  .btn.sm{padding:9px 13px;font-size:10.5px}
+  .logo b{font-size:19px}
+  .logomark{width:18px;height:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.14s!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+
+<svg class="sr" aria-hidden="true"><defs>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5 9.5 17.5 19.5 7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6.5 18.5 12 13 17.5"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5.5 15.5 12 9 18.5"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 19.5s-7.2-4.4-7.2-9.2A3.9 3.9 0 0 1 12 8.1a3.9 3.9 0 0 1 7.2 2.2c0 4.8-7.2 9.2-7.2 9.2z"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4.5M8.5 8 12 4.5 15.5 8"/><path d="M5.5 13v5.5h13V13"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-drag" viewBox="0 0 24 24"><path d="M3 12h18M7 8.5 3.5 12 7 15.5M17 8.5 20.5 12 17 15.5"/></symbol>
+<symbol id="i-rot" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="4"/><path d="M8 11.3 12 15l4-3.7"/></symbol>
+<symbol id="i-reset" viewBox="0 0 24 24"><path d="M4.5 10a7.5 7.5 0 1 1 .6 5"/><path d="M4 5.5V10h4.5"/></symbol>
+<symbol id="i-pool" viewBox="0 0 24 24"><path d="M3 16.5c1.6 0 1.6 1.4 3.2 1.4s1.6-1.4 3.2-1.4 1.6 1.4 3.2 1.4 1.6-1.4 3.2-1.4 1.6 1.4 3.2 1.4"/><path d="M7.5 16V6.5a2 2 0 0 1 4 0V15M12.5 16V6.5a2 2 0 0 1 4 0V15"/></symbol>
+<symbol id="i-view" viewBox="0 0 24 24"><path d="M3 18l5.5-7 4 4.5L16 11l5 7z"/><circle cx="7.5" cy="7" r="2"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20H4z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-13 0 9-5 13-10 13-2.2 0-4-1.8-4-4z"/><path d="M8 16c2-3 5-5 8-6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" stroke="none"/></symbol>
+<symbol id="i-mark" viewBox="0 0 24 24"><path d="M12 22V9"/><path d="M12 13c0-3.4 2.6-6.2 6.4-6.6-.3 3.8-2.9 6.6-6.4 6.6z"/><path d="M12 16.4c0-3-2.3-5.4-5.6-5.8.3 3.3 2.6 5.8 5.6 5.8z"/><path d="M12 9c0-3.1 1.6-5.4 4-6.4.3 3.1-1.4 5.7-4 6.4z"/></symbol>
+<symbol id="i-sprig" viewBox="0 0 24 24"><path d="M12 20V7"/><path d="M12 12.5c0-2.6 2-4.7 4.8-5-.2 2.9-2.1 5-4.8 5z"/><path d="M12 15c0-2.3-1.8-4.1-4.3-4.4.2 2.5 2 4.4 4.3 4.4z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+</defs></svg>
+
+<header id="nav">
+  <div class="wrap navin">
+    <a class="logo" href="#home" data-page="home"><svg class="logomark" aria-hidden="true"><use href="#i-mark"/></svg><span class="logotext"><b>The Vista</b><span>by Mukkanni</span></span></a>
+    <nav class="navlinks" aria-label="Main">
+      <a href="#stay" data-scroll>The stay</a>
+      <a href="#rooms" data-scroll>Rooms</a>
+      <a href="#film" data-scroll>Walkthrough</a>
+      <a href="#around" data-scroll>Look around</a>
+      <a href="#location" data-scroll>Location</a>
+      <a href="#gallery" data-page="gallery">Gallery</a>
+    </nav>
+    <div class="navcta">
+      <button class="iconbtn" id="btnSave" aria-pressed="false" aria-label="Save this stay"><svg aria-hidden="true"><use href="#i-heart"/></svg></button>
+      <button class="iconbtn" id="btnShare" aria-label="Share this page"><svg aria-hidden="true"><use href="#i-share"/></svg></button>
+      <a class="btn sm" href="#book" data-page="book">Reserve</a>
+      <button class="iconbtn" id="navToggle" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============================================================= HOME === -->
+<div class="page on" id="page-home">
+
+  <section class="herowrap">
+   <div class="herodecor" aria-hidden="true">
+     <span class="wash"></span><span class="wash2"></span>
+     <span class="arc"></span><span class="arc2"></span>
+     <img class="spray a" src="img/spray.svg" alt="">
+     <img class="spray b" src="img/sprig.svg" alt="">
+   </div>
+   <div class="wrap hero">
+    <div class="herohead">
+      <div>
+        <div class="eyebrow">Stays &middot; Nature &middot; People &middot; Stories</div>
+        <h1 class="h-xl" style="margin-top:12px">A brighter,<br>slower Wayanad</h1>
+        <p class="strap">A 360&deg; virtual tour of your staycation</p>
+        <div class="sub">
+          <span><b>The Vista</b> by Mukkanni</span><i class="dot"></i>
+          <span>Kuppadi &middot; Sulthan Bathery &middot; Wayanad</span>
+        </div>
+      </div>
+      <a class="btn" href="#book" data-page="book">Check availability <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="mosaic" id="mosaic"></div>
+   </div>
+  </section>
+
+  <section class="wrap sec tight" id="stay">
+    <div class="cols">
+      <div class="stack">
+        <div>
+          <p class="lede">More than a stay. <em>A pause, a view, a memory in the making.</em></p>
+          <p class="body" style="margin-top:18px">Before it became a destination, The Vista began as an idea: to create a space in Wayanad that feels calm, warm, and easy to return to. Thoughtfully designed interiors, open spaces, a refreshing pool, and the calm of Wayanad come together to create a stay that feels both modern and grounded.</p>
+          <p class="body" style="margin-top:14px">Here, mornings open to green views, afternoons move at their own pace, and evenings invite you to do a little less and enjoy a little more.</p>
+        </div>
+        <div class="feature-row">
+          <span class="pill"><svg aria-hidden="true"><use href="#i-pool"/></svg>Pool</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-view"/></svg>Balcony views</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-home"/></svg>Modern interiors</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-leaf"/></svg>Relaxed comfort</span>
+        </div>
+        <hr class="rule">
+        <div>
+          <h2 class="h-m">What&rsquo;s inside the apartment</h2>
+          <ul class="ticks" style="margin-top:18px">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Air-conditioned bedrooms with ceiling fans</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Floor-to-ceiling wardrobe storage</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Kitchenette with mini fridge and kettle</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Cooktop, sink and stone counters</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Dining table and chairs</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Lounge seating and a wall-mounted TV</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Stone-clad bathroom, counter basin, hot water</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Private balcony with planters</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Covered pool and lawn</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Parking under the building</li>
+          </ul>
+        </div>
+        <hr class="rule">
+        <div>
+          <h2 class="h-m">Room by room</h2>
+          <dl class="dl" style="margin-top:18px">
+            <dt>Bedroom</dt><dd>A calm, air-conditioned bedroom with crisp linens, warm tones, and a restful feel. Wardrobe storage, soft linens, and simple touches that make the room feel complete.</dd>
+            <dt>Living</dt><dd>A cozy lounge space to relax, chat, or unwind after a day in Wayanad. In several apartments the kitchen opens straight onto it through a wide pass-through.</dd>
+            <dt>Kitchen</dt><dd>A practical kitchenette with dining space, warm finishes, and the essentials for easy meals and tea breaks.</dd>
+            <dt>Bathroom</dt><dd>Clean finishes, modern fittings, and a bright, practical bathroom space for an easy stay.</dd>
+            <dt>Outside</dt><dd>A balcony to every floor, a covered pool with lawn alongside, and parking at ground level.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <aside class="bookcard">
+        <h3>Request your dates</h3>
+        <p class="muted">The owners confirm rates and availability directly. Nothing is published online.</p>
+        <form id="quickForm">
+          <div class="fgrid">
+            <div class="fcell"><label for="qIn">Check in</label><input type="date" id="qIn" name="in"></div>
+            <div class="fcell"><label for="qOut">Check out</label><input type="date" id="qOut" name="out"></div>
+            <div class="fcell full"><label for="qGuests">Guests</label>
+              <select id="qGuests" name="guests">
+                <option>1 guest</option><option selected>2 guests</option><option>3 guests</option>
+                <option>4 guests</option><option>5 guests</option><option>6 guests</option><option>More than 6</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn" type="submit" style="width:100%;margin-top:16px">Check availability</button>
+        </form>
+        <p class="muted note">You won&rsquo;t be charged here. The next step prepares a request you send to the owners.</p>
+        <hr class="rule" style="margin-block:18px">
+        <dl style="margin:0;display:flex;flex-direction:column;gap:11px">
+          <div class="srow"><dt>Where</dt><dd>Kuppadi, Sulthan Bathery</dd></div>
+          <div class="srow"><dt>Pool</dt><dd>Covered, open one side</dd></div>
+          <div class="srow"><dt>Parking</dt><dd>On site, under the building</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec cream" id="rooms">
+    <div class="decor tr" aria-hidden="true"><img src="img/sprig.svg" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <div class="eyebrow">A closer look</div>
+      <h2 class="h-l" style="margin-top:10px">Bedroom &middot; Kitchen &middot; Living</h2>
+      <p class="body" style="margin-top:14px">Every photograph here is the property&rsquo;s own. Open a room to see the rest of its pictures.</p>
+      <div class="roomgrid reveal" id="roomGrid" style="margin-top:clamp(24px,3vw,36px)"></div>
+    </div>
+  </section>
+
+  <section class="sec videoband" id="film">
+    <div class="wrap videorow">
+      <div>
+        <div class="eyebrow">The walkthrough</div>
+        <h2 class="h-l" style="margin-top:10px">Walk the apartment,<br>front door to bathroom</h2>
+        <p class="body" style="margin-top:16px">The owners filmed the apartment in one unbroken pass: in from the parking, through the living room and the kitchen counter, past the wardrobe and the dressing mirror, into the bedroom and the bathroom. It is the quickest way to understand how the rooms connect.</p>
+        <ul class="ticks" style="margin-top:20px;grid-template-columns:1fr">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Exterior and parking</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Living room and kitchen counter</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Wardrobe, dressing mirror and bedroom</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Bathroom</li>
+        </ul>
+      </div>
+      <div>
+        <div class="player" id="player">
+          <img class="poster" id="vPoster" src="media/walkthrough-poster.jpg" alt="Still from the walkthrough film: the sectional sofa and coffee table in the lounge.">
+          <video id="vMain" playsinline preload="none" poster="media/walkthrough-poster.jpg" hidden>
+            <source src="media/walkthrough.mp4" type="video/mp4">
+            <source src="media/walkthrough.webm" type="video/webm">
+          </video>
+          <button class="playbtn" id="vPlay" aria-label="Play the walkthrough film">
+            <i><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i>
+            <span>Play the walkthrough</span>
+          </button>
+        </div>
+        <p class="cap">Filmed by the property. Sound on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="around">
+    <div class="wrap">
+      <div class="split" style="align-items:flex-end;margin-bottom:clamp(22px,3vw,30px)">
+        <div>
+          <div class="eyebrow">360&deg; from above</div>
+          <h2 class="h-l" style="margin-top:10px">Look the whole way round</h2>
+        </div>
+        <p class="body">A drone panorama shot over the property on 1 October 2026. Drag it round: paddy fields on one side, palm groves and scattered houses on the other, and the hills of Wayanad on the horizon the whole way round.</p>
+      </div>
+    </div>
+    <div class="panoshell">
+      <div class="pano" id="pano" role="group" tabindex="0" aria-label="360 degree aerial panorama. Drag left or right, or use the arrow keys, to turn the whole way round.">
+        <div class="strip" id="panoStrip"></div>
+        <button class="panonav l" id="panoLeft" aria-label="Turn left"><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button>
+        <button class="panonav r" id="panoRight" aria-label="Turn right"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <div class="panoctl">
+          <button id="panoAuto" aria-pressed="false" aria-label="Turn slowly on its own"><svg aria-hidden="true"><use href="#i-rot"/></svg></button>
+          <button id="panoReset" aria-label="Reset the view"><svg aria-hidden="true"><use href="#i-reset"/></svg></button>
+        </div>
+        <div class="hint"><svg aria-hidden="true"><use href="#i-drag"/></svg>Drag to look around</div>
+        <div class="panobar" aria-hidden="true"><i id="panoBar"></i></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="cap">Equirectangular 360&deg; panorama, cropped to the horizon band. The Vista is the building at the centre.</p>
+    </div>
+  </section>
+
+  <section class="sec cream" id="pool">
+    <div class="decor bl" aria-hidden="true"><img src="img/sprig.svg" alt="" loading="lazy"></div>
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow">The pool</div>
+        <h2 class="h-l" style="margin-top:10px">Covered on top,<br>open to the trees</h2>
+        <p class="body" style="margin-top:16px">The pool runs the length of the deck under a dark roof, with one long side open to the trees and a strip of lawn along the inside edge. Lit after dark, so it keeps working into the evening.</p>
+        <div class="feature-row" style="margin-top:20px">
+          <span class="pill"><svg aria-hidden="true"><use href="#i-check"/></svg>Roofed, usable in the rain</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-check"/></svg>Lawn alongside</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-check"/></svg>Lit at night</span>
+        </div>
+      </div>
+      <div class="figure"><img src="img/pool.jpg" alt="The covered pool: blue mosaic tiling, steel ladders, a dark roof overhead and trees through the open side." loading="lazy"></div>
+    </div>
+    <div class="wrap photorow" id="poolRow" style="margin-top:clamp(18px,2.4vw,26px)"></div>
+  </section>
+
+  <section class="sec" id="location">
+    <div class="wrap">
+      <div class="split" style="align-items:flex-end;margin-bottom:clamp(22px,3vw,30px)">
+        <div>
+          <div class="eyebrow">Where it is</div>
+          <h2 class="h-l" style="margin-top:10px">Kuppadi, Sulthan Bathery</h2>
+        </div>
+        <p class="body">In the Wayanad plateau, with working paddy fields on one side and palm groves on the other. The balconies face the valley; the road runs past the boundary to the front.</p>
+      </div>
+      <div class="figure"><img src="img/aerial.jpg" alt="Aerial panorama over Kuppadi showing paddy fields, palm groves, houses and the hills of Wayanad on the horizon." loading="lazy" style="aspect-ratio:auto"></div>
+      <div class="split" style="margin-top:clamp(26px,3.4vw,40px)">
+        <div>
+          <h3 class="h-m">What you can see from the property</h3>
+          <dl class="dl" style="margin-top:16px">
+            <dt>From the balcony</dt><dd>Palms in the foreground, green slopes and scattered houses across the valley, the pool directly below.</dd>
+            <dt>From above</dt><dd>Paddy fields and palm groves running to low hills in every direction.</dd>
+            <dt>At the door</dt><dd>A three-storey building in white and green, parking underneath, trees on the approach.</dd>
+          </dl>
+          <p class="muted" style="margin-top:18px">Distances, directions and nearby attractions aren&rsquo;t published by the property, so they&rsquo;re left off this page rather than guessed. Ask for them when you request dates.</p>
+        </div>
+        <div class="photorow" id="hoodRow" style="grid-template-columns:1fr 1fr"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cream">
+    <div class="decor bl" aria-hidden="true"><img src="img/sprig.svg" alt="" loading="lazy"></div>
+    <div class="decor tr" aria-hidden="true"><img src="img/sprig.svg" alt="" loading="lazy"></div>
+    <div class="wrap-n" style="text-align:center">
+      <div class="leafrule" style="margin-bottom:22px"><svg aria-hidden="true"><use href="#i-sprig"/></svg></div>
+      <div class="eyebrow">Moments that stay</div>
+      <h2 class="h-l" style="margin-top:12px">Made for the moments that matter</h2>
+      <p class="body" style="margin:16px auto 0;text-align:left">For families, friends, and quiet getaways, The Vista was imagined as a space for long conversations, shared meals, restful sleep, and simple joy.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px">
+        <a class="btn" href="#book" data-page="book">Request your dates <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost" href="#gallery" data-page="gallery">See all photos</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================================== GALLERY === -->
+<div class="page" id="page-gallery">
+  <section class="wrap sec">
+    <div class="eyebrow">Gallery</div>
+    <h1 class="h-l" style="margin-top:10px">Every photograph of The Vista</h1>
+    <p class="body" style="margin-top:14px">The property&rsquo;s own stills, the walkthrough film and the drone panorama. Filter by room, or open any picture full size.</p>
+    <div class="filters" id="filters" style="margin-top:26px" role="group" aria-label="Filter photos by room"></div>
+    <div class="masonry" id="masonry"></div>
+  </section>
+</div>
+
+<!-- ============================================================= BOOK === -->
+<div class="page" id="page-book">
+  <section class="wrap sec">
+    <div class="steps" id="steps">
+      <span class="now"><b>1</b>Your dates</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9c8c0" stroke-width="2" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
+      <span><b>2</b>Visit first?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9c8c0" stroke-width="2" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
+      <span><b>3</b>Your details</span>
+    </div>
+    <div class="bookcols">
+      <div class="panelcard">
+        <div class="eyebrow">Reserve</div>
+        <h1 class="h-l" style="margin-top:10px">Love this home?</h1>
+        <p class="body" style="margin-top:12px">Tell the owners when you&rsquo;d like to come and how to reach you. They confirm rates and availability themselves, and this page writes the message for you to send.</p>
+
+        <form id="bookForm" class="formstack" style="margin-top:28px" novalidate>
+          <div>
+            <h2 class="h-m" style="font-size:19px">1 &middot; Your dates</h2>
+            <div class="grid2" style="margin-top:14px">
+              <div class="field"><label for="bIn">Check in</label><input type="date" id="bIn" name="checkin" required></div>
+              <div class="field"><label for="bOut">Check out</label><input type="date" id="bOut" name="checkout"></div>
+              <div class="field"><label for="bGuests">Guests</label>
+                <select id="bGuests" name="guests">
+                  <option>1 guest</option><option selected>2 guests</option><option>3 guests</option>
+                  <option>4 guests</option><option>5 guests</option><option>6 guests</option><option>More than 6</option>
+                </select>
+              </div>
+              <div class="field"><label for="bPurpose">What brings you</label>
+                <select id="bPurpose" name="purpose">
+                  <option selected>A getaway</option><option>Family trip</option><option>With friends</option>
+                  <option>Working remotely</option><option>Just passing through</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="h-m" style="font-size:19px">2 &middot; If you&rsquo;d like to visit first</h2>
+            <p class="muted" style="margin-top:6px">Optional. Pick a time if you would like to be shown round in person.</p>
+            <div class="slots" id="bSlots" style="margin-top:14px" role="group" aria-label="Preferred viewing time"></div>
+          </div>
+
+          <div>
+            <h2 class="h-m" style="font-size:19px">3 &middot; Your details</h2>
+            <div class="grid2" style="margin-top:14px">
+              <div class="field"><label for="bName">Full name</label><input type="text" id="bName" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="bPhone">Phone or WhatsApp</label><input type="tel" id="bPhone" name="phone" autocomplete="tel"></div>
+            </div>
+            <div class="field" style="margin-top:14px"><label for="bEmail">Email</label><input type="email" id="bEmail" name="email" autocomplete="email" required></div>
+            <div class="field" style="margin-top:14px"><label for="bMsg">Anything the owners should know?</label><textarea id="bMsg" name="message" placeholder="Arrival time, number of rooms, questions about rates&hellip;"></textarea></div>
+          </div>
+
+          <div class="callout">Nothing is charged and nothing is sent automatically. Pressing the button below writes your request out so you can send it to the owners on Instagram or by email.</div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn" type="submit">Prepare my request <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <button class="btn ghost" type="button" id="btnAsk">Just ask a question</button>
+          </div>
+        </form>
+
+        <div id="bookDone" hidden></div>
+      </div>
+
+      <aside class="summary">
+        <div class="simg"><img src="img/openplan.jpg" alt="The open-plan living space with the kitchen pass-through and a wall-mounted TV." loading="lazy"></div>
+        <div class="sbody">
+          <div>
+            <div class="eyebrow">Your request</div>
+            <h2 class="h-m" style="margin-top:7px">The Vista</h2>
+            <p class="muted">Kuppadi &middot; Sulthan Bathery &middot; Wayanad</p>
+          </div>
+          <hr class="rule">
+          <dl>
+            <div class="srow"><dt>Check in</dt><dd id="sIn">Not set</dd></div>
+            <div class="srow"><dt>Check out</dt><dd id="sOut">Not set</dd></div>
+            <div class="srow"><dt>Nights</dt><dd id="sNights">Not set</dd></div>
+            <div class="srow"><dt>Guests</dt><dd id="sGuests">2 guests</dd></div>
+            <div class="srow"><dt>Viewing</dt><dd id="sSlot">Not needed</dd></div>
+          </dl>
+          <hr class="rule">
+          <div class="srow"><dt>Total</dt><dd id="sTotal">On request</dd></div>
+          <p class="muted">The Vista doesn&rsquo;t publish nightly rates, so no price is shown here. The owners quote per stay.</p>
+          <a class="btn ghost" href="https://instagram.com/thevista.mukkani" target="_blank" rel="noopener" style="text-align:center">@thevista.mukkani</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer style="position:relative;overflow:hidden">
+  <div class="decor tr" aria-hidden="true"><img src="img/sprig.svg" alt="" loading="lazy"></div>
+  <div class="wrap footgrid" style="position:relative;z-index:1">
+    <div>
+      <a class="logo" href="#home" data-page="home" style="margin-bottom:12px"><svg class="logomark" aria-hidden="true"><use href="#i-mark"/></svg><span class="logotext"><b>The Vista</b><span>by Mukkanni</span></span></a>
+      <p class="muted" style="max-width:30ch">A Wayanad stay imagined for slower mornings, greener views, and meaningful escapes.</p>
+    </div>
+    <div><h4>The stay</h4><ul>
+      <li><a href="#stay" data-scroll>About</a></li>
+      <li><a href="#rooms" data-scroll>Rooms</a></li>
+      <li><a href="#pool" data-scroll>The pool</a></li>
+      <li><a href="#film" data-scroll>Walkthrough film</a></li>
+    </ul></div>
+    <div><h4>Look closer</h4><ul>
+      <li><a href="#gallery" data-page="gallery">Gallery</a></li>
+      <li><a href="#around" data-scroll>360&deg; from above</a></li>
+      <li><a href="#location" data-scroll>Location</a></li>
+      <li><a href="#book" data-page="book">Request dates</a></li>
+    </ul></div>
+    <div><h4>Find us</h4><ul>
+      <li><a href="https://instagram.com/thevista.mukkani" target="_blank" rel="noopener">@thevista.mukkani</a></li>
+      <li><span class="muted">Kuppadi, Sulthan Bathery</span></li>
+      <li><span class="muted">Wayanad, Kerala</span></li>
+    </ul></div>
+  </div>
+  <div class="wrap footbar">
+    <span>&copy; The Vista by Mukkanni</span>
+    <span>Everything on this page comes from the property&rsquo;s own photographs, drone panorama and walkthrough film.</span>
+  </div>
+</footer>
+
+<div class="stickybook">
+  <div><b>On request</b><div class="muted">Rates confirmed by the owners</div></div>
+  <a class="btn sm" href="#book" data-page="book">Reserve</a>
+</div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lbh"><span id="lbTitle"></span><button class="lbbtn" id="lbClose" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+  <div class="lbs" id="lbStage"></div>
+  <div class="lbf">
+    <button class="lbbtn" id="lbPrev" aria-label="Previous photo"><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button>
+    <span id="lbCount"></span>
+    <button class="lbbtn" id="lbNext" aria-label="Next photo"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+const MF = {
+"aerial": {
+"shots": [],
+"hero": "img/aerial.jpg",
+"thumb": "thumb/aerial.jpg",
+"w": 5000,
+"h": 1250,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAGABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBq6/eEEkxj6IKWPWL6TDK0Y+q0UVHMwJP7Yv1GA0PX/nnRRRTux2P/2Q==",
+"pano": true
+},
+"arrival": {
+"shots": [
+{
+"src": "img/arrival-00.jpg",
+"thumb": "thumb/arrival-00.jpg",
+"w": 960,
+"h": 1280
+}
+],
+"hero": "img/arrival.jpg",
+"thumb": "thumb/arrival.jpg",
+"w": 960,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDdOpxys62+yTYNxIbPHrxVSTUJ1GBtVd20E898VS0WVesIJlERJO3O4e3I5odo0VncZ/e4xnkHIxUNuwou7KWqFSBKXhZnbPKEtgjvRVqW2024t0E7vGeq7OeMUUguZVnqN5bzQ29rPAoC43OABnnuafqFzKtzKihXU/MAVyM1oR2djbyM0dou7Gck5xxVtRCU4hAP1ptofKzMhttSvLaGWOJfLZOy98niitpZ3gjRYjtUgnb6UUWTDU//2Q=="
+},
+"dusk": {
+"shots": [],
+"hero": "img/dusk.jpg",
+"thumb": "thumb/dusk.jpg",
+"w": 852,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAhABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDn/LpDHUkcsbqMHn071bltT5a+SVZ+jAnG0+nrXZzxtcy5WZxjoqO4lBIXHT8OaKh1VcfKS2drIXRwFYehIrSP7iUmR0BZshAO2PWsQO5/iIA96eJCB94/nXNc0HSQxsxxJt56MOlFQls+9FIQh+7SHpRRQMKKKKAP/9k="
+},
+"pool": {
+"shots": [
+{
+"src": "img/pool-00.jpg",
+"thumb": "thumb/pool-00.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/pool-01.jpg",
+"thumb": "thumb/pool-01.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/pool-02.jpg",
+"thumb": "thumb/pool-02.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/pool-03.jpg",
+"thumb": "thumb/pool-03.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/pool-04.jpg",
+"thumb": "thumb/pool-04.jpg",
+"w": 852,
+"h": 1280
+}
+],
+"hero": "img/pool.jpg",
+"thumb": "thumb/pool.jpg",
+"w": 1280,
+"h": 852,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAPABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDG/sy4E4jTkhckH8qUWUwba0YBxnlsCpbvUHubgTY8r5dpEfHFXYA3kCWOUSqyFcODnscZq4Jy2ZjOSjuZhsmkyN8Yx6ZNFXbmeJHWOWBlYDOUYc557iinyTDmXQ//2Q=="
+},
+"poolnight": {
+"shots": [],
+"hero": "img/poolnight.jpg",
+"thumb": "thumb/poolnight.jpg",
+"w": 852,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAhABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDmseox707ao6mtxtPUhgyA57gYqCbT4IuOdqsM7sdSpPX8K15jHlMglPrRXTRafb7BsMZ+kij+tFLmQWKCtO4+aeUj/ex/KnvbiWMpIzEEg9c/zqQp5R45U9D/AI0jSAKTXVBQl0OWr7SL3KUtlhgkA3t1IxRV7TGOZJj1Y7Rn0FFTJ2ehtBO2o4f8ev8AwEVXk/1LfQ0UVFM0mTad/wAeifSiiim9xH//2Q=="
+},
+"balcony": {
+"shots": [
+{
+"src": "img/balcony-00.jpg",
+"thumb": "thumb/balcony-00.jpg",
+"w": 852,
+"h": 1280
+}
+],
+"hero": "img/balcony.jpg",
+"thumb": "thumb/balcony.jpg",
+"w": 1280,
+"h": 852,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAPABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCBB5VhA6jJdypB7Ctiwm0yOMNcRosgPUozA/SsF51bT44gMspJ59xTEV9pPKCNQWKt7Z6Ua9BalyJ0KSEHIMrYPtk0VUs5MwEEk4duaK0JP//Z"
+},
+"lounge": {
+"shots": [
+{
+"src": "img/lounge-00.jpg",
+"thumb": "thumb/lounge-00.jpg",
+"w": 1254,
+"h": 1254
+}
+],
+"hero": "img/lounge.jpg",
+"thumb": "thumb/lounge.jpg",
+"w": 960,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC0IyYxvikTjOQM1XSVgxXjOflG1skfTp+taNpLJwoc7QOlQ36AA7WKk/3Tg1m5lxiyF2nJ42RDr83JNFR3ECpqEiKOijrz2FFJvUaK9rKZ5UjiLvI3RAwH60szCKfYyEvg5VWJIx+lT7MwsqnYP9niobSBEbIyT0yaz5jTlFtpI5JHLSMD/eLYP0orVt441ziNc9zjrRVp3Qmj/9k="
+},
+"living": {
+"shots": [
+{
+"src": "img/living-00.jpg",
+"thumb": "thumb/living-00.jpg",
+"w": 1280,
+"h": 852
+},
+{
+"src": "img/living-01.jpg",
+"thumb": "thumb/living-01.jpg",
+"w": 960,
+"h": 1280
+}
+],
+"hero": "img/living.jpg",
+"thumb": "thumb/living.jpg",
+"w": 852,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAhABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDPmWWGVQoLc5Ugc1flntpUy8bHI5BjJpbkEeUyMVYkAEe5q/qFkLbTxMszlgVznHNZpmrRg7bdLkyLGwUrt2+WfWikub+SO4kQBcKxGTRSuOxHd6kZFiCnbtAJYdjViV9Vlt181rh4jg4KEg+lUrNAAS/QdKnjkurfBjZSQeDkgijnS0FyN6lG4MkszyBDhmJoq/5vV3UFm5P1oqOZ9jTlXcjT/Vj6ipJPufiKKKllLYifqaKKKYj/2Q=="
+},
+"openplan": {
+"shots": [
+{
+"src": "img/openplan-00.jpg",
+"thumb": "thumb/openplan-00.jpg",
+"w": 1280,
+"h": 852
+},
+{
+"src": "img/openplan-01.jpg",
+"thumb": "thumb/openplan-01.jpg",
+"w": 1280,
+"h": 852
+},
+{
+"src": "img/openplan-02.jpg",
+"thumb": "thumb/openplan-02.jpg",
+"w": 852,
+"h": 1280
+}
+],
+"hero": "img/openplan.jpg",
+"thumb": "thumb/openplan.jpg",
+"w": 1280,
+"h": 852,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAPABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBPNSJVL4+bsDUrSxgRngB88N14rPa3aRkcMSMnK+tWcFVVZGUIoO3AyRnrzXNzRR0KMi7beRIrF5SpBxgJn3/rRWXMlwmfInwCcnjB6Af0oq1NEuDP/9k="
+},
+"kitchen": {
+"shots": [
+{
+"src": "img/kitchen-00.jpg",
+"thumb": "thumb/kitchen-00.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/kitchen-01.jpg",
+"thumb": "thumb/kitchen-01.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/kitchen-02.jpg",
+"thumb": "thumb/kitchen-02.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/kitchen-03.jpg",
+"thumb": "thumb/kitchen-03.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/kitchen-04.jpg",
+"thumb": "thumb/kitchen-04.jpg",
+"w": 960,
+"h": 1280
+}
+],
+"hero": "img/kitchen.jpg",
+"thumb": "thumb/kitchen.jpg",
+"w": 960,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDTlk3dCp/Gq7I5OSMD1PSopJ3MgEce7DYYsOMU0yNJE8flOJWXA2jjP1qHNspKw+WOE4Dp5vfnpRSSKsJ2qvJOSARRSGZ9zffZQcOzhm/hYZz9cVRGps8ysEZCDkMJCT+Iq3rUMf2ddqhfm7D2rL02GOWdhIu7apPWkpXjcpxs7G0z3E5EzyJ8w7LiirtsqLAnloFBHTrRWDrO5qqSP//Z"
+},
+"bedroom": {
+"shots": [
+{
+"src": "img/bedroom-00.jpg",
+"thumb": "thumb/bedroom-00.jpg",
+"w": 1280,
+"h": 852
+},
+{
+"src": "img/bedroom-01.jpg",
+"thumb": "thumb/bedroom-01.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/bedroom-02.jpg",
+"thumb": "thumb/bedroom-02.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/bedroom-03.jpg",
+"thumb": "thumb/bedroom-03.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/bedroom-04.jpg",
+"thumb": "thumb/bedroom-04.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/bedroom-05.jpg",
+"thumb": "thumb/bedroom-05.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/bedroom-06.jpg",
+"thumb": "thumb/bedroom-06.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/bedroom-07.jpg",
+"thumb": "thumb/bedroom-07.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/bedroom-08.jpg",
+"thumb": "thumb/bedroom-08.jpg",
+"w": 1200,
+"h": 1600
+}
+],
+"hero": "img/bedroom.jpg",
+"thumb": "thumb/bedroom.jpg",
+"w": 1280,
+"h": 852,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAPABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCsloYLjEbnB5APSrsazcZwAfYUz7GzSiSaZl4xtT/GphDHu5aQDHA3mskmaXRUaHMzZNFSG0lWUvFN5ikY2uTkUUrMND//2Q=="
+},
+"dressing": {
+"shots": [
+{
+"src": "img/dressing-00.jpg",
+"thumb": "thumb/dressing-00.jpg",
+"w": 960,
+"h": 1280
+}
+],
+"hero": "img/dressing.jpg",
+"thumb": "thumb/dressing.jpg",
+"w": 960,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbYsrHgEjriqck0soUc7WH3UH9adYZk1y+V8kB/l+hUVoja3lDH3RjpXM7mpz0tw3nyQww5MR2t7GipLcA31+f+mxooGa1vYGK/e63gFwMrjPbHWomhjsJDIPOjBz0kLRn8O1WyxzT0JPB5B7VtKCRmpXOVW9txcXGcxt5h3EP94+tFbV/4a0+8bzFQwOTlvL6H8KKjkL5j//Z"
+},
+"bath": {
+"shots": [
+{
+"src": "img/bath-00.jpg",
+"thumb": "thumb/bath-00.jpg",
+"w": 960,
+"h": 1280
+},
+{
+"src": "img/bath-01.jpg",
+"thumb": "thumb/bath-01.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/bath-02.jpg",
+"thumb": "thumb/bath-02.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/bath-03.jpg",
+"thumb": "thumb/bath-03.jpg",
+"w": 852,
+"h": 1280
+},
+{
+"src": "img/bath-04.jpg",
+"thumb": "thumb/bath-04.jpg",
+"w": 852,
+"h": 1280
+}
+],
+"hero": "img/bath.jpg",
+"thumb": "thumb/bath.jpg",
+"w": 960,
+"h": 1280,
+"lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDajdQhU8nPHtT5ftLlYxIUXbkmktlQy5bk1LPOsUy7gzZQjAx61DZRTkcRSFQSccZNFVJpsysVEmCeOKKQyeS6+zo0nUqOmetUpNZtZbT95bSi8QELsPBPrnpiq+pSEQMRVaAh0yyg/LmndLcLX2LttcGRfMZTk9c0VDYuWDA+pP60VIz/2Q=="
+}
+};
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r)=>(r||document).querySelector(s);
+const $$ = (s,r)=>Array.from((r||document).querySelectorAll(s));
+
+const ROOMS=[
+ {id:"openplan",name:"Open-plan living",kind:"Living",line:"Kitchen, TV wall and bedroom door all off one room.",
+  alt:"Open-plan apartment interior with a kitchen pass-through, a wall-mounted TV on a panelled wall and wood flooring."},
+ {id:"lounge",name:"The lounge",kind:"Living",line:"Deep sectional seating for everyone at once.",
+  alt:"A large beige sectional sofa wrapping two walls, with a low coffee table and a curtained window."},
+ {id:"living",name:"Living room",kind:"Living",line:"Sofa under the window, cane chairs, solid wood doors.",
+  alt:"A living room with a grey sofa under a curtained window, cane chairs and a low coffee table."},
+ {id:"kitchen",name:"Kitchen & dining",kind:"Kitchen",line:"Mini fridge, kettle, cooktop, sink and a table.",
+  alt:"A kitchenette with cream cabinets, a black stone counter, a kettle, a small fridge and a dining table."},
+ {id:"bedroom",name:"Bedroom",kind:"Bedroom",line:"Air-conditioned, with a fan and a window to the trees.",
+  alt:"A bedroom with a wide bed in white linen against a wood-panelled headboard wall."},
+ {id:"dressing",name:"Dressing & wardrobe",kind:"Bedroom",line:"Floor-to-ceiling wardrobes, mirror, a ledge to work at.",
+  alt:"Floor-to-ceiling cream wardrobes with open drawers and a full-length mirror beside a doorway."},
+ {id:"bath",name:"Bathroom",kind:"Bath",line:"Stone-clad walls, counter basin, hot water.",
+  alt:"A bathroom clad in veined stone tiling with a round counter basin and a frameless mirror."},
+ {id:"pool",name:"The pool",kind:"Outdoor",line:"Covered, open to the trees, lit after dark.",
+  alt:"A long covered swimming pool with blue mosaic tiling and lawn along the edge."},
+ {id:"balcony",name:"The balcony",kind:"Outdoor",line:"Planters along the rail, the valley beyond.",
+  alt:"A private balcony with potted plants along a black railing, looking out to palms and green slopes."},
+ {id:"arrival",name:"Arrival",kind:"Outdoor",line:"Three storeys in white and green, parking underneath.",
+  alt:"The front of The Vista: a three-storey white and green building with a balcony on each floor."},
+ {id:"aerial",name:"From above",kind:"Outdoor",line:"The 360° drone panorama over Kuppadi.",
+  alt:"Aerial panorama over Kuppadi: paddy fields, palm groves and the hills of Wayanad."}
+];
+const EXTRA={arrival:["dusk"],pool:["poolnight"]};
+const CAPTION={dusk:"The building after dark",poolnight:"The pool lit at night"};
+function shotsOf(id){
+  const out=[]; const push=k=>{ const m=MF[k]; if(!m) return;
+    if(m.hero) out.push({src:m.hero,thumb:m.thumb||m.hero});
+    (m.shots||[]).forEach(s=>out.push(s)); };
+  push(id); (EXTRA[id]||[]).forEach(push); return out;
+}
+const ALL=[]; ROOMS.forEach(r=>shotsOf(r.id).forEach(s=>ALL.push({src:s.src,thumb:s.thumb,room:r.id,cap:r.name,alt:r.alt})));
+
+/* ------------------------------------------------------------------ mosaic */
+(function(){
+  const pick=["openplan","pool","bedroom","balcony","bath"];
+  const el=$("#mosaic");
+  pick.forEach((id,i)=>{
+    const r=ROOMS.find(x=>x.id===id), m=MF[id]||{};
+    const b=document.createElement("button"); b.type="button";
+    b.setAttribute("aria-label","Open "+r.name+" photographs");
+    b.innerHTML='<img src="'+m.hero+'" alt="">';
+    b.querySelector("img").alt=r.alt;
+    if(i>0) b.querySelector("img").loading="lazy";
+    b.addEventListener("click",()=>openLB(shotsOf(id).map(s=>({src:s.src,cap:r.name,alt:r.alt})),0,r.name));
+    el.appendChild(b);
+  });
+  const all=document.createElement("button");
+  all.className="btn sm allphotos"; all.type="button";
+  all.innerHTML='<svg aria-hidden="true"><use href="#i-grid"/></svg>Show all photos';
+  all.addEventListener("click",()=>route("gallery"));
+  el.appendChild(all);
+})();
+
+/* --------------------------------------------------------------- room grid */
+(function(){
+  const g=$("#roomGrid");
+  ROOMS.forEach(r=>{
+    const m=MF[r.id]||{}, n=shotsOf(r.id).length;
+    const b=document.createElement("button"); b.className="roomcard"; b.type="button";
+    b.setAttribute("aria-label","Open "+r.name+", "+n+" photographs");
+    b.innerHTML='<div class="shot"><img loading="lazy" src="'+m.hero+'" alt=""><span class="count">'+n+' photo'+(n===1?"":"s")+'</span></div>'
+      +'<div><div class="kind"></div><h3></h3><p></p></div>';
+    b.querySelector("img").alt=r.alt;
+    b.querySelector(".kind").textContent=r.kind;
+    b.querySelector("h3").textContent=r.name;
+    b.querySelector("p").textContent=r.line;
+    b.addEventListener("click",()=>openLB(shotsOf(r.id).map(s=>({src:s.src,cap:r.name,alt:r.alt})),0,r.name));
+    g.appendChild(b);
+  });
+})();
+
+/* ------------------------------------------------------------- photo rows */
+function fillRow(sel,list){
+  const el=$(sel); if(!el) return;
+  list.forEach(it=>{
+    const b=document.createElement("button"); b.type="button";
+    b.setAttribute("aria-label","Open photograph: "+it.cap);
+    b.innerHTML='<img loading="lazy" src="'+(it.thumb||it.src)+'" alt="">';
+    b.querySelector("img").alt=it.alt||it.cap;
+    b.addEventListener("click",()=>openLB(list,list.indexOf(it),it.cap));
+    el.appendChild(b);
+  });
+}
+fillRow("#poolRow", shotsOf("pool").slice(1,5).map(s=>({src:s.src,thumb:s.thumb,cap:"The pool",alt:"The covered pool at The Vista."})));
+fillRow("#hoodRow", [
+  {src:(MF.balcony||{}).hero,thumb:(MF.balcony||{}).thumb,cap:"From the balcony",alt:"The view from the balcony over palms and green slopes."},
+  {src:(MF.arrival||{}).hero,thumb:(MF.arrival||{}).thumb,cap:"At the door",alt:"The three-storey building seen from the approach."},
+  {src:(MF.dusk||{}).hero,thumb:(MF.dusk||{}).thumb,cap:"After dark",alt:"The building lit up at dusk, seen from across the grass."},
+  {src:((MF.balcony||{}).shots||[{}])[0] ? (MF.balcony.shots[0].src) : (MF.pool||{}).hero,
+   thumb:((MF.balcony||{}).shots||[{}])[0] ? (MF.balcony.shots[0].thumb) : (MF.pool||{}).thumb,
+   cap:"Looking out",alt:"Palms and the valley seen from the property."}
+].filter(x=>x.src));
+
+/* ---------------------------------------------------------------- gallery */
+(function(){
+  const f=$("#filters"), mas=$("#masonry");
+  const groups=[{id:"all",name:"All photos"}].concat(ROOMS.map(r=>({id:r.id,name:r.name})));
+  let cur="all";
+  function paint(){
+    mas.innerHTML="";
+    const list=cur==="all"?ALL:ALL.filter(x=>x.room===cur);
+    list.forEach((it,i)=>{
+      const b=document.createElement("button"); b.type="button";
+      b.setAttribute("aria-label","Open photograph: "+it.cap);
+      b.innerHTML='<img loading="lazy" src="'+it.src+'" alt="">';
+      b.querySelector("img").alt=it.alt;
+      b.addEventListener("click",()=>openLB(list,i,it.cap));
+      mas.appendChild(b);
+    });
+    const v=document.createElement("button"); v.type="button";
+    v.setAttribute("aria-label","Play the walkthrough film");
+    v.innerHTML='<img loading="lazy" src="media/walkthrough-poster.jpg" alt="Still from the walkthrough film.">';
+    v.addEventListener("click",()=>openLB([{video:VIDSRC,poster:"media/walkthrough-poster.jpg",cap:"Walkthrough film"}],0,"Walkthrough film"));
+    if(cur==="all") mas.appendChild(v);
+  }
+  groups.forEach(g=>{
+    const b=document.createElement("button"); b.type="button"; b.textContent=g.name;
+    b.setAttribute("aria-pressed",String(g.id===cur));
+    b.addEventListener("click",()=>{ cur=g.id; $$("button",f).forEach(x=>x.setAttribute("aria-pressed",String(x===b))); paint(); });
+    f.appendChild(b);
+  });
+  paint();
+})();
+
+const VIDSRC=(function(){ var t=document.createElement("video");
+  return t.canPlayType('video/mp4; codecs="avc1.42E01E"') ? "media/walkthrough.mp4" : "media/walkthrough.webm"; })();
+
+/* --------------------------------------------------------------- lightbox */
+let lbSet=[], lbI=0, lastFocus=null;
+function openLB(set,i,title){
+  lbSet=set; lbI=i||0; lastFocus=document.activeElement;
+  $("#lbTitle").textContent=title||"";
+  $("#lb").classList.add("open"); document.body.style.overflow="hidden";
+  paintLB(); $("#lbClose").focus();
+}
+function paintLB(){
+  const it=lbSet[lbI]; if(!it) return;
+  const st=$("#lbStage"); st.innerHTML="";
+  if(it.video){
+    const v=document.createElement("video"); v.src=it.video; v.poster=it.poster||""; v.controls=true; v.playsInline=true; v.autoplay=true;
+    st.appendChild(v);
+  } else {
+    const im=document.createElement("img"); im.src=it.src; im.alt=it.alt||it.cap||""; st.appendChild(im);
+  }
+  $("#lbCount").textContent=(it.cap?it.cap+"  ·  ":"")+(lbI+1)+" / "+lbSet.length;
+  $("#lbPrev").hidden=$("#lbNext").hidden=lbSet.length<2;
+}
+function closeLB(){
+  $("#lb").classList.remove("open"); $("#lbStage").innerHTML=""; document.body.style.overflow="";
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+$("#lbClose").addEventListener("click",closeLB);
+$("#lbPrev").addEventListener("click",()=>{ lbI=(lbI-1+lbSet.length)%lbSet.length; paintLB(); });
+$("#lbNext").addEventListener("click",()=>{ lbI=(lbI+1)%lbSet.length; paintLB(); });
+$("#lb").addEventListener("click",e=>{ if(e.target===$("#lb")||e.target.id==="lbStage") closeLB(); });
+
+/* ------------------------------------------------------------------ pano */
+(function(){
+  const box=$("#pano"), strip=$("#panoStrip"), bar=$("#panoBar"), m=MF.aerial||{};
+  if(!box||!m.hero) return;
+  let x=0, w=0, vel=0, auto=false, dragging=false, raf=0, last=0;
+  const FRICTION=0.945, AUTOSPEED=-0.55, NUDGE=26;
+
+  for(let i=0;i<2;i++){
+    const im=document.createElement("img");
+    im.src=m.hero; im.draggable=false;
+    im.alt=i?"":"360 degree aerial panorama over Kuppadi: paddy fields, palm groves, scattered houses and the hills of Wayanad on the horizon.";
+    if(i) im.setAttribute("aria-hidden","true");
+    strip.appendChild(im);
+  }
+  function measure(){
+    const h=box.clientHeight;
+    w=(m.w/m.h)*h;
+    $$("img",strip).forEach(im=>{ im.style.height=h+"px"; im.style.width=w+"px"; });
+  }
+  function draw(){
+    if(w){ while(x<=-w) x+=w; while(x>0) x-=w; }
+    strip.style.transform="translate3d("+x.toFixed(2)+"px,0,0)";
+    if(bar&&w){ const f=((-x)%w)/w; bar.style.left=(f*74)+"%"; }
+  }
+  function tick(now){
+    const dt=last?Math.min(2.6,(now-last)/16.67):1; last=now;
+    if(!dragging){
+      if(auto) vel+=(AUTOSPEED-vel)*0.055*dt;
+      if(Math.abs(vel)>0.012){ x+=vel*dt; vel*=Math.pow(FRICTION,dt); draw(); }
+      else if(!auto) vel=0;
+    }
+    raf=requestAnimationFrame(tick);
+  }
+  let px=0, moved=0;
+  box.addEventListener("pointerdown",e=>{
+    if(e.target.closest("button")) return;
+    dragging=true; px=e.clientX; vel=0; moved=0;
+    box.setPointerCapture(e.pointerId);
+    box.classList.add("grabbing","moved");
+  });
+  box.addEventListener("pointermove",e=>{
+    if(!dragging) return;
+    const d=e.clientX-px; px=e.clientX;
+    x+=d; moved+=Math.abs(d);
+    vel=vel*0.62+d*0.38;
+    draw();
+  });
+  function release(e){
+    if(!dragging) return;
+    dragging=false; box.classList.remove("grabbing");
+    if(moved<3) vel=0;
+    try{ box.releasePointerCapture(e.pointerId); }catch(err){}
+  }
+  box.addEventListener("pointerup",release);
+  box.addEventListener("pointercancel",release);
+  box.addEventListener("pointerleave",release);
+
+  function nudge(dir){ box.classList.add("moved"); vel=dir*NUDGE; }
+  $("#panoLeft").addEventListener("click",()=>nudge(1));
+  $("#panoRight").addEventListener("click",()=>nudge(-1));
+  box.addEventListener("keydown",e=>{
+    if(e.key==="ArrowLeft"){ e.preventDefault(); nudge(1); }
+    if(e.key==="ArrowRight"){ e.preventDefault(); nudge(-1); }
+  });
+  box.addEventListener("wheel",e=>{
+    if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){ e.preventDefault(); box.classList.add("moved"); x-=e.deltaX; vel=-e.deltaX*0.4; draw(); }
+  },{passive:false});
+
+  $("#panoAuto").addEventListener("click",()=>{
+    if(RM){ toast("Auto-turn is off because your system asks for reduced motion."); return; }
+    auto=!auto;
+    $("#panoAuto").setAttribute("aria-pressed",String(auto));
+    $("#panoAuto").classList.toggle("on",auto);
+    if(auto) box.classList.add("moved"); else vel*=0.4;
+  });
+  $("#panoReset").addEventListener("click",()=>{
+    auto=false; $("#panoAuto").setAttribute("aria-pressed","false"); $("#panoAuto").classList.remove("on");
+    const target=-(w*0.5)+box.clientWidth/2;
+    const from=x, dist=target-x, t0=performance.now(), D=RM?1:620;
+    vel=0;
+    (function glide(now){
+      const k=Math.min(1,(now-t0)/D), e=1-Math.pow(1-k,3);
+      x=from+dist*e; draw();
+      if(k<1) requestAnimationFrame(glide);
+    })(t0);
+  });
+
+  function start(){
+    measure();
+    x=-(w*0.5)+box.clientWidth/2;
+    draw();
+    box.classList.add("ready");
+  }
+  const first=strip.querySelector("img");
+  if(first.complete) start(); else first.addEventListener("load",start,{once:true});
+  addEventListener("resize",()=>{ const f=w?((-x)%w)/w:0; measure(); x=-(f*w); draw(); });
+  raf=requestAnimationFrame(tick);
+})();
+
+/* ----------------------------------------------------------------- video */
+(function(){
+  const v=$("#vMain"), p=$("#vPlay"), poster=$("#vPoster");
+  p.addEventListener("click",()=>{
+    v.hidden=false; poster.hidden=true; p.style.display="none";
+    v.controls=true; v.preload="auto";
+    try{ v.load(); }catch(e){}
+    const go=()=>{ const r=v.play(); if(r&&r.catch) r.catch(()=>{}); };
+    if(v.readyState>=2) go(); else v.addEventListener("loadeddata",go,{once:true});
+    setTimeout(go,350);
+  });
+})();
+
+/* --------------------------------------------------------------- routing */
+function closeNav(){ const n=$("#nav"); if(n) n.classList.remove("open"); $("#navToggle").setAttribute("aria-expanded","false"); }
+const PAGES=["home","gallery","book"];
+function route(id,noScroll){
+  if(PAGES.indexOf(id)<0) id="home";
+  PAGES.forEach(p=>{
+    const el=$("#page-"+p); const on=p===id;
+    el.classList.toggle("on",on); el.setAttribute("aria-hidden",String(!on));
+  });
+  document.body.classList.toggle("booking",id==="book");
+  $$("[data-page]").forEach(a=>{
+    if(a.getAttribute("href")==="#"+id) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  });
+  if(!noScroll) window.scrollTo({top:0,behavior:RM?"auto":"smooth"});
+  if(location.hash.slice(1)!==id) history.replaceState(null,"","#"+id);
+  closeNav();
+  revealAll();
+}
+$$("[data-page]").forEach(a=>a.addEventListener("click",e=>{
+  e.preventDefault(); route(a.getAttribute("href").slice(1));
+}));
+$$("[data-scroll]").forEach(a=>a.addEventListener("click",e=>{
+  e.preventDefault();
+  const t=$(a.getAttribute("href"));
+  route("home",true); closeNav();
+  requestAnimationFrame(()=>{ if(t) t.scrollIntoView({behavior:RM?"auto":"smooth",block:"start"}); });
+}));
+addEventListener("hashchange",()=>{ const h=location.hash.slice(1); if(PAGES.indexOf(h)>=0) route(h); });
+route(PAGES.indexOf(location.hash.slice(1))>=0?location.hash.slice(1):"home",true);
+
+/* -------------------------------------------------------------- nav bits */
+addEventListener("scroll",()=>{ $("#nav").classList.toggle("stuck",scrollY>8); },{passive:true});
+$("#navToggle").addEventListener("click",()=>{
+  const on=$("#nav").classList.toggle("open");
+  $("#navToggle").setAttribute("aria-expanded",String(on));
+});
+
+/* ------------------------------------------------------------ save/share */
+let saved=false;
+try{ saved=localStorage.getItem("vista.saved")==="1"; }catch(e){}
+function paintSave(){
+  $("#btnSave").setAttribute("aria-pressed",String(saved));
+  $("#btnSave").classList.toggle("on",saved);
+  $("#btnSave").setAttribute("aria-label",saved?"Saved. Tap to remove":"Save this stay");
+}
+paintSave();
+$("#btnSave").addEventListener("click",()=>{
+  saved=!saved; try{ localStorage.setItem("vista.saved",saved?"1":"0"); }catch(e){}
+  paintSave(); toast(saved?"Saved to this browser":"Removed from saved");
+});
+const URLHERE=(location.protocol==="https:"||location.protocol==="http:")?location.href.split("#")[0]:"https://instagram.com/thevista.mukkani";
+$("#btnShare").addEventListener("click",()=>copy(URLHERE,"Link copied"));
+async function copy(text,ok){
+  try{ await navigator.clipboard.writeText(text); toast(ok); }
+  catch(e){
+    const ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); toast(ok); }catch(e2){ toast("Select the text and copy it manually."); }
+    ta.remove();
+  }
+}
+let tT=0;
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("on");
+  clearTimeout(tT); tT=setTimeout(()=>t.classList.remove("on"),2600);
+}
+
+/* --------------------------------------------------------------- booking */
+const SLOTS=["09:30","11:00","12:30","15:00","16:30","18:00"];
+let slotPick="";
+(function(){
+  const w=$("#bSlots");
+  const none=document.createElement("button");
+  none.type="button"; none.className="slot"; none.textContent="Not needed";
+  none.setAttribute("aria-pressed","true");
+  w.appendChild(none);
+  const mk=(label,val)=>{
+    const b=document.createElement("button"); b.type="button"; b.className="slot"; b.textContent=label;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",()=>{ slotPick=val; $$(".slot").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); sync(); });
+    return b;
+  };
+  none.addEventListener("click",()=>{ slotPick=""; $$(".slot").forEach(x=>x.setAttribute("aria-pressed",String(x===none))); sync(); });
+  SLOTS.forEach(t=>w.appendChild(mk(t,t)));
+  const today=new Date(), d1=new Date(Date.now()+7*864e5), d2=new Date(Date.now()+9*864e5);
+  const iso=d=>d.toISOString().slice(0,10);
+  ["#bIn","#qIn"].forEach(s=>{ $(s).value=iso(d1); $(s).min=iso(today); });
+  ["#bOut","#qOut"].forEach(s=>{ $(s).value=iso(d2); $(s).min=iso(today); });
+})();
+function pretty(v){
+  if(!v) return "Not set";
+  const d=new Date(v+"T00:00:00");
+  return isNaN(d)?v:d.toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"});
+}
+function nights(){
+  const a=$("#bIn").value, b=$("#bOut").value;
+  if(!a||!b) return null;
+  const n=Math.round((new Date(b)-new Date(a))/864e5);
+  return n>0?n:null;
+}
+function sync(){
+  $("#sIn").textContent=pretty($("#bIn").value);
+  $("#sOut").textContent=pretty($("#bOut").value);
+  const n=nights();
+  $("#sNights").textContent=n?(n+" night"+(n===1?"":"s")):"Not set";
+  $("#sGuests").textContent=$("#bGuests").value;
+  $("#sSlot").textContent=slotPick?("Viewing at "+slotPick):"Not needed";
+  const steps=$$("#steps > span");
+  const filled=$("#bName").value.trim()&&$("#bEmail").value.trim();
+  steps.forEach((s,i)=>s.classList.toggle("now", i===0?true:(i===1?!!$("#bIn").value:!!filled)));
+}
+["#bIn","#bOut","#bGuests","#bName","#bEmail"].forEach(s=>{
+  $(s).addEventListener("input",sync); $(s).addEventListener("change",sync);
+});
+sync();
+
+$("#quickForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  if($("#qIn").value) $("#bIn").value=$("#qIn").value;
+  if($("#qOut").value) $("#bOut").value=$("#qOut").value;
+  $("#bGuests").value=$("#qGuests").value;
+  sync(); route("book");
+  setTimeout(()=>$("#bName").focus(),420);
+});
+
+$("#bookForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#bName").value.trim(), email=$("#bEmail").value.trim(), ci=$("#bIn").value;
+  if(!name||!email||!ci){
+    toast("Add your name, email and a check-in date.");
+    (!ci?$("#bIn"):!name?$("#bName"):$("#bEmail")).focus();
+    return;
+  }
+  const n=nights();
+  const lines=[
+    "Booking request for The Vista by Mukkanni",
+    "Kuppadi · Sulthan Bathery · Wayanad","",
+    "Check in:  "+pretty(ci),
+    "Check out: "+pretty($("#bOut").value),
+    n?("Nights:    "+n):"",
+    "Guests:    "+$("#bGuests").value,
+    "Occasion:  "+$("#bPurpose").value,
+    slotPick?("Viewing:   "+slotPick):"", "",
+    "Name:      "+name,
+    "Email:     "+email,
+    $("#bPhone").value.trim()?("Phone:     "+$("#bPhone").value.trim()):"",
+    $("#bMsg").value.trim()?("\nNotes: "+$("#bMsg").value.trim()):"",
+    "", "Could you confirm availability and your rate for these dates?"
+  ].filter(x=>x!=="");
+  const text=lines.join("\n");
+  $("#bookForm").hidden=true;
+  const d=$("#bookDone"); d.hidden=false;
+  d.innerHTML='<div class="eyebrow">Ready to send</div>'
+    +'<h2 class="h-l" style="margin-top:10px">Your request is written out</h2>'
+    +'<p class="body" style="margin-top:12px">This page can’t send mail or messages on its own, so nothing has gone out yet. Copy the text below and send it to the owners. They answer on Instagram.</p>'
+    +'<code class="block" style="margin-top:20px"></code>'
+    +'<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">'
+    +'<button class="btn" type="button" id="copyReq">Copy request</button>'
+    +'<a class="btn ghost" href="https://instagram.com/thevista.mukkani" target="_blank" rel="noopener">Open @thevista.mukkani</a>'
+    +'<button class="btn ghost" type="button" id="againReq">Change something</button></div>';
+  d.querySelector("code").textContent=text;
+  $("#copyReq").addEventListener("click",()=>copy(text,"Request copied. Paste it to the owners."));
+  $("#againReq").addEventListener("click",()=>{ d.hidden=true; $("#bookForm").hidden=false; $("#bName").focus(); });
+  $$("#steps > span").forEach(s=>s.classList.add("now"));
+  d.scrollIntoView({behavior:RM?"auto":"smooth",block:"start"});
+});
+
+$("#btnAsk").addEventListener("click",()=>{
+  $("#bMsg").focus();
+  $("#bMsg").placeholder="What would you like to ask? Rates, how many the apartment sleeps, whether the pool is heated…";
+  toast("Ask away. Your question goes in the same request.");
+});
+
+/* --------------------------------------------------------------- reveal */
+function revealAll(){
+  const els=$$(".reveal");
+  if(RM||!("IntersectionObserver" in window)){ els.forEach(e=>e.classList.add("in")); return; }
+  const io=new IntersectionObserver(es=>{
+    es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  },{rootMargin:"0px 0px -8% 0px"});
+  els.forEach(e=>{ if(!e.classList.contains("in")) io.observe(e); });
+}
+revealAll();
+setTimeout(()=>$$(".reveal").forEach(e=>e.classList.add("in")),1500);
+
+/* ------------------------------------------------------------- keyboard */
+addEventListener("keydown",e=>{
+  if($("#lb").classList.contains("open")){
+    if(e.key==="Escape") closeLB();
+    if(e.key==="ArrowLeft") $("#lbPrev").click();
+    if(e.key==="ArrowRight") $("#lbNext").click();
+    return;
+  }
+  if(e.key==="Escape") closeNav();
+});
+})();
+</script>
+
+</body>
+</html>
